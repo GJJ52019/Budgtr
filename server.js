@@ -40,13 +40,41 @@ app.use((req, res, next) => {
 });
 
 app.use(express.urlencoded({ extended:false }));
+app.use(express.static('public'))
 //++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 //Index +++++++++++++++++++++++++++++++++++++++++++++++
 app.get('/budgets',(req,res) =>{
     res.render('budget_index.ejs',{allbudgets:budgets});
 });
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+
+//new routes++++++++++++++++++++++++++++++++++++++++++++++++
+app.get('/budgets/new', (req, res) => {
+    res.render('budget_new.ejs');
+});
+
+
+//post
+app.post('/budgets', (req, res) => {
+    budgets.push(req.body);
+    console.log(req.body);
+    res.redirect('/budgets');
+});
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+//show route+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+app.get('/budgets/:id',(req,res) =>{
+
+    let budget = req.params.id
+    res.render('budget_show.ejs',{
+            budget: budgets[req.params.id]
+    });
+});
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 //============================================================
