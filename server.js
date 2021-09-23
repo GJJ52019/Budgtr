@@ -1,16 +1,17 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 3001;
 const budgets = require('./models/budget.js');
 
+//default load 
 app.get('/', (req,res) =>{
     const template = `    
 <html>
     <head>
     <style type="text/css">
         body {
-          color: steelblue;
-          background-color: Grey;
+          color: navy;
+          background-color: lightgrey;
         }
       </style>
     </head>
@@ -29,8 +30,7 @@ app.get('/', (req,res) =>{
 
 
 
-
 app.listen(port, () => {
-    console.log(`Biscoff Bakery app listening on port: ${port}`)
+    console.log(`Lets see those NUMBERS on port: ${port}`)
   });
   

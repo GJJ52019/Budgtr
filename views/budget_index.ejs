@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biscoff Bakery</title>
+    <style type="text/css">
+        body {
+          color: navy;
+          background-color: lightgray;
+        }
+      </style>
+</head>
+<body>
+        <h1>Welcome to Biscoff Bakery</h1>
+        <ul>
+            <% for(let i = 0; i < allbakedgoods.length; i++) {  %>
+                <li>
+                    <a href="/bakedgoods/<%=i%>"><%=(allbakedgoods[i].name)%> $<%=allbakedgoods[i].price %></a>
+                </li>
+            <% } %>
+        </ul>
+        <p><a href="/">Back to Main Menu</a></p>
+        
+</body>
+</html>
