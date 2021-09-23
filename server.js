@@ -1,9 +1,14 @@
+
+//constants +++++++++++++++++++++++++++++++++
 const express = require('express');
 const app = express();
-const port = 3001;
+const port = 3000;
 const budgets = require('./models/budget.js');
 
-//default load 
+//==========================================================================
+//handling routes
+
+//default load ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 app.get('/', (req,res) =>{
     const template = `    
 <html>
@@ -26,10 +31,26 @@ app.get('/', (req,res) =>{
 
     res.send(template);
 })
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//middleware ++++++++++++++++++++++++++++++++++
+app.use((req, res, next) => {
+    console.log('I run for all routes');
+    next();
+});
+
+app.use(express.urlencoded({ extended:false }));
+//++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//Index +++++++++++++++++++++++++++++++++++++++++++++++
+app.get('/budgets',(req,res) =>{
+    res.render('budget_index.ejs',{allbudgets:budgets});
+});
 
 
 
-
+//============================================================
+//listening post =============================================
 app.listen(port, () => {
     console.log(`Lets see those NUMBERS on port: ${port}`)
   });
