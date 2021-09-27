@@ -11,13 +11,17 @@
           background-color: lightgray;
         }
       </style>
+      <link rel="stylesheet" href="/normalize.css">
+      <link rel="stylesheet" href="/skeleton.css">
 </head>
 <body>
         <h1><%=budget.name%></h1>
-        <h2><%=budget.date %></h2>
-        <h3><%= budget.from %></h3>
-        <h3>$<%=budget.amount%></h3>
-        <ul>
+        <button onclick="window.location='http://localhost:3000/budgets'">Back</button>
+        <p><strong>date </strong><br>&emsp;&emsp;<%=budget.date %></p>
+        <p><strong>name </strong><br>&emsp;&emsp;<%=budget.name %></p>
+        <p><strong>from </strong><br>&emsp;&emsp;<%=budget.from %></p>
+        <p><strong>amount </strong><br>&emsp;&emsp;$<%=budget.amount %></p>
+        <ul><strong>tags</strong>
             <% for(let i = 0; i < budget.tags.length; i++) {  %>
                 <li>
                     <%=(budget.tags[i])%>

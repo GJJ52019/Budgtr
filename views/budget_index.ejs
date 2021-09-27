@@ -11,19 +11,32 @@
           background-color: lightgray;
         }
       </style>
+      <link rel="stylesheet" href="/normalize.css">
+      <link rel="stylesheet" href="/skeleton.css">
+      <script type="text/javascript" 
+        src="./server.js">
+    </script>
 </head>
 <body>
         <h1>Budgtr ALL</h1>
-        <ul>
-            <% for(let i = 0; i < allbudgets.length; i++) {  %>
-                <li>
-                    <a href="/budgets/<%=i%>"><%=(allbudgets[i].name)%></a>
-                </li>
-            <% } %>
-        </ul>
-        <p><a href="/">Back to Main Menu</a></p>
-        <link rel="stylesheet" href="/normalize.css">
-        <link rel="stylesheet" href="/skeleton.css">
+        <p>Current balance: <span id="balance">bankaccount</span></p>
+    
+        <br><button onclick="window.location='http://localhost:3000/budgets/new'">New Item</button><button onclick="window.location='http://localhost:3000/'">Back</button>
+        <table>
+            <% allbudgets.forEach((budgets) =>{ %>
+            <tr>
+              <td><%= budgets.date %></td>
+              <td><a href="/budgets/<%=allbudgets.indexOf(budgets)%>">
+                <%=budgets.name%>
+            </a></td>
+                    <% let amount = parseInt(budgets.amount) %>
+                    
+              <td><%= amount %></td>
+            </tr>
+      
+            <% }) %>
+          </table>
+        
         
 </body>
 </html>

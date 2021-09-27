@@ -19,15 +19,16 @@ app.get('/', (req,res) =>{
           background-color: lightgrey;
         }
       </style>
+      <link rel="stylesheet" href="/normalize.css">
+      <link rel="stylesheet" href="/skeleton.css">
     </head>
     <body>
         <h1>Budget App</h1>
+        <button onclick="window.location='http://localhost:3000/budgets/new'">New Item</button><button onclick="window.location='http://localhost:3000/budgets'">View Budgtr</button>
     </body>
 </html>
 `
-{/* <p><a href="/bakedgoods">BakedGoods Menu</a></p>
-<p>OR</p>
-<p><a href="/bakedgoods/new">Create a new Treat</a></p> */}
+
 
     res.send(template);
 })
@@ -45,6 +46,11 @@ app.use(express.static('public'))
 
 //Index +++++++++++++++++++++++++++++++++++++++++++++++
 app.get('/budgets',(req,res) =>{
+    let bankaccount = 0
+      budgets.forEach((budget) => {bankaccount += parseInt(budget.amount);});
+        console.log(bankaccount);
+        
+     
     res.render('budget_index.ejs',{allbudgets:budgets});
 });
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -82,4 +88,3 @@ app.get('/budgets/:id',(req,res) =>{
 app.listen(port, () => {
     console.log(`Lets see those NUMBERS on port: ${port}`)
   });
-  

@@ -3,16 +3,25 @@
     <head>
         <meta charset="utf-8">
         <title>New post</title>
+        <style type="text/css">
+            body {
+              color: navy;
+              background-color: lightgray;
+            }
+          </style>
+        <link rel="stylesheet" href="/normalize.css">
+        <link rel="stylesheet" href="/skeleton.css">
     </head>
     <body>
         <h1>New post to the Budgtr</h1>
       <!--  NOTE: action will be the route, method will be the HTTP verb-->
       <form action="/budgets" method="POST">
-        Name: <input type="text" name="name" /><br/>
-        Date: <input type="text" name="date" /><br/>
-        From: <input type="text" name="from" /><br/>
-        Amount: <input type="text" name="amount" /><br/>
-        <input type="submit" value="Create Budgtr Item"/>
+        <input type="text" placeholder="name" name="name" />
+        <input type="text" placeholder="date" name="date" /><br/>
+        <input type="text" placeholder="from" name="from" />
+        <input type="number" placeholder="amount" name="amount" /><br/>
+        <input type="text" placeholder="tag" name="tags" /><br/>
+        <input type="submit" value="Create Budgtr Item"/><button onclick="window.location='http://localhost:3000/budgets'">Back</button>
     </form>
 </body>
 </html>
